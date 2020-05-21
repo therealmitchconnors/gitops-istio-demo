@@ -36,7 +36,7 @@ spec:
     # max number of failed metric checks before rollback
     threshold: 10
     # total number of iterations
-    iterations: 10
+    iterations: 5
     # canary match condition
     match:
       - headers:
