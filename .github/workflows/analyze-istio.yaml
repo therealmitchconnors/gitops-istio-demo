@@ -1,0 +1,22 @@
+name: analyze-istio
+
+on:
+  workflow_dispatch:
+  pull_request:
+
+jobs:
+  check-istio:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          ref: main
+      - name: Get Istioctl
+        id: check
+        run: |
+          ISTIO_VERSION=$(yq eval '. | select(.kind == "Deployment") | .spec.template.spec.containers[0].image | split(":") | .[1]' istio/operator/manifests.yaml)
+          # downloadIstio will now retrieve the currently installed binary, instead of latest
+          curl -sL https://istio.io/downloadIstio | sh -
+          # this command will exit(1) if an error is found in any yaml
+          ./istio-$(ISTIO_VERSION)/bin/istioctl analyze -A --use-kube=false --failure-threshold ERROR **.yaml
