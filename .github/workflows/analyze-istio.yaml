@@ -19,4 +19,6 @@ jobs:
           # downloadIstio will now retrieve the currently installed binary, instead of latest
           curl -sL https://istio.io/downloadIstio | sh -
           # this command will exit(1) if an error is found in any yaml
+          ls -lah
+          pwd
           ./istio-$(ISTIO_VERSION)/bin/istioctl analyze -A --use-kube=false --failure-threshold ERROR **.yaml
