@@ -22,7 +22,7 @@ jobs:
         with:
           version: v0.11.1
       - name: Install Flux in Kubernetes Kind
-        run: flux install
+        run: flux install --registry docker.io/fluxcd
       - name: Set Istio Gateway service type
         run: |
           kubectl -n flux-system create cm istio-version --from-literal=service=NodePort
