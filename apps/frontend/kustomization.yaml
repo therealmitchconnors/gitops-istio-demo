@@ -5,8 +5,8 @@ resources:
   - deployment.yaml
   - hpa.yaml
 images:
-  - name: ghcr.io/stefanprodan/podinfo
-    newName: ghcr.io/stefanprodan/podinfo
+  - name: docker.io/stefanprodan/podinfo
+    newName: docker.io/stefanprodan/podinfo
     newTag: 6.1.0
 patchesJson6902:
 - path: deployment.patch.yaml

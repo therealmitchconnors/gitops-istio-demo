@@ -25,7 +25,7 @@ spec:
     spec:
       containers:
       - name: backend
-        image: ghcr.io/stefanprodan/podinfo:5.0.0
+        image: docker.io/stefanprodan/podinfo:5.0.0
         imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 9898
